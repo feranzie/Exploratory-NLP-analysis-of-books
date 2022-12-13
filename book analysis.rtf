@@ -1,0 +1,102 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033\deflangfe1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Arial;}{\f2\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue0;\red255\green255\blue255;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}{\info{\horzdoc}{\*\lchars ([\'7b{\uc1 \u183 ?}{\uc1 \u8216 ?}{\uc1 \u8220 ?}{\uc1 \u12296 ?}{\uc1 \u12298 ?}{\uc1 \u12300 ?}{\uc1 \u12302 ?}{\uc1 \u12304 ?}{\uc1 \u12308 ?}{\uc1 \u12310 ?}{\uc1 \u65288 ?}{\uc1 \u65294 ?}{\uc1 \u65339 ?}{\uc1 \u65371 ?}{\uc1 \u65505 ?}{\uc1 \u65509 ?}}{\*\fchars !),.:;?]\'7d{\uc1 \u168 ?}{\uc1 \u183 ?}{\uc1 \u711 ?}{\uc1 \u713 ?}{\uc1 \u8213 ?}{\uc1 \u8214 ?}{\uc1 \u8217 ?}{\uc1 \u8221 ?}{\uc1 \u8230 ?}{\uc1 \u8758 ?}{\uc1 \u12289 ?}{\uc1 \u12290 ?}{\uc1 \u12291 ?}{\uc1 \u12293 ?}{\uc1 \u12297 ?}{\uc1 \u12299 ?}{\uc1 \u12301 ?}{\uc1 \u12303 ?}{\uc1 \u12305 ?}{\uc1 \u12309 ?}{\uc1 \u12311 ?}{\uc1 \u65281 ?}{\uc1 \u65282 ?}{\uc1 \u65287 ?}{\uc1 \u65289 ?}{\uc1 \u65292 ?}{\uc1 \u65294 ?}{\uc1 \u65306 ?}{\uc1 \u65307 ?}{\uc1 \u65311 ?}{\uc1 \u65341 ?}{\uc1 \u65344 ?}{\uc1 \u65372 ?}{\uc1 \u65373 ?}{\uc1 \u65374 ?}{\uc1 \u65504 ?}}}
+\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\qc\b\f0\fs28\lang9 REPORT\par
+
+\pard\sa200\sl276\slmult1\cf1\highlight2\i\f1\fs24 Executive Summary\par
+\b0\i0\fs22 Read the data into a list data structure\par
+selected important parts of the book needed for the analysis\par
+split the book into chapters\par
+cleaned the data by removing punctuation,lowercasing words,digits and word containing digits\par
+word distribution plots namely word cloud to show the most frequently occuring words for each chapter and  phrase distributions\par
+name and place identification \par
+
+\pard\keep\keepn\sb90\sa90\b\i\fs24 Data Cleaning\par
+\b0\i0  \fs22 I started by reading the data into memory. i then put it into a list data structure, then chose the parts of the book i needed which was from the introduction to the last chapter of the book.\par
+There were three files namely: Apocolocyntosis(1001.txt), The House on the Borderland (1002.txt) and My First Years As A Frenchwoman(1003.txt). \par
+I chose 3 features which are: Chapter number, chapter content and word count ( number of unique words).\par
+I encountered missing chapter number in the Apocolocyntosis book( the book wasnt sectioned into chapters)\par
+The chapter number is an integer type feature, the chapter content is a string type feature, the word count feature is an float type feature.\par
+I dealt with missing data( in this case empty lines) by removing the empty lines while reading the data into the list.\par
+I dealt with mismatched data by removing punctuation, digits, words containing digits by using a lambda function and RegEx. I also dealt with capitalization by lower casing all words.\par
+I then converted the list of text into a string.\par
+For the Apocolocyntosis book(1001.txt) i couldnt extract chapters for the book because the book dosent have chapters\par
+For the The House on the Borderland book(1002.txt) the chapters were labelled in roman numerals in the format "_Roman numeral_" (e.g "_I_"), I searched through the text for each roman numeral in that format and replaced each chapter number with the keyword "CHAPTER" , i then used RegEx to find all places where the keyword "CHAPTER" appears and then grouped all text below it into a list variable. All chapter content was stored as a value in a list. I then created a list of the chapter number and created a dataframe of the chapter number and chapter content.I then created a loop to count number of unique words in each chapter and saved it in a word count variable. I added the word count list as a column in the data frame\par
+For the First Years As A Frenchwoman book (1003.txt)it was impossible to extract the chapter of the book with code because of the labelling, The chapters were labelled in roman numerals in the format "Roman numeral"(E.g "I") if i tried extracting the chapters with code the code would be unable to differentaite the roman numeral "I" and the letter "I", I decided to go the route of manually entering the key word "CHAPTER" into the text befor reading the file. I then used RegEx to find all places where the keyword "CHAPTER" appears and then grouped all text below it into a list variable. All chapter contet was stored as a value in a list. I then created a list of the chapter nu,mber and created a dataframe of the chapter number and chapter content. I then created a loop to count number of unique words in each chapter and saved it in a word count variable. I added the word count list as a column in the data frame\b\i\fs24\par
+\par
+\b0\par
+
+\pard\sa200\sl276\slmult1\b Exploratory Data Analysis\par
+\ul\b0\i0\fs22 Apocolocyntosis book(1001.txt)\ulnone\par
+I created a word cloud plot which shows most frequently occuring words, with higher frequency words corelating to high font size( the bigger words are more occouring)\par
+Question 1:why is claudius the most occouring word in the book?\par
+
+\pard\sa200\sl276\slmult1\tx1980 I also created a phrase distribution plot for top 5 most occouring 2,3,4 and 5 word against the count of the number of times they appeared\par
+Question 2: why is there more occourence of 2 phrase words than others?\b\i\fs24\par
+
+\pard\sa200\sl276\slmult1\ul\b0\i0\fs22 The House on the Borderland (1002.txt)\par
+\ulnone I made a plot of the chapter number against the word count per chapter\ul\par
+\ulnone I created a word cloud plot which shows most frequently occuring words for each chapter, with higher frequency words corelating to high font size( the bigger words are more occouring)\par
+Question 1: What genre is the book?\par
+
+\pard\sa200\sl276\slmult1\tx1980 I also created a phrase distribution plot for top 5 most occouring 2,3,4 and 5 word against the count of the number of times they appeared in the entire book and another for specifically chapter 1 since it had the highest word count\par
+Question 2: why is there more occourence of 2 phrase words than others?\par
+Question 3:what are the names of some characters in the book\par
+I proceeded to tokenize the words which was useful in the next phase of my analysis which was to get names and places mentioned in the book using both spacy and NLTK's NER\par
+
+\pard\sa200\sl276\slmult1\ul My First Years As A Frenchwoman (1003.txt)\par
+\ulnone I made a plot of the chapter number against the word count per chapter\ul\par
+\ulnone I created a word cloud plot which shows most frequently occuring words for each chapter, with higher frequency words corelating to high font size( the bigger words are more occouring)\par
+Question 1: Why are words like creature,pepper,light common within multiple chapters?\par
+
+\pard\sa200\sl276\slmult1\tx1980 I also created a phrase distribution plot for top 5 most occouring 2,3,4 and 5 word against the count of the number of times they appeared in the entire book and another for specifically chapter 1 since it had the highest word count\par
+Question 2: why is there more occourence of 2 phrase words than others?\par
+Question 3:Why does the word pepper occour so much in the book?\par
+I proceeded to tokenize the words which was useful in the next phase of my analysis which was to get names and places mentioned in the book using both spacy and NLTK's NER\b\i\fs24\par
+\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard\keep\keepn\sb90\sa90 Descriptive Analytics\par
+
+\pard\sa200\sl276\slmult1\ul\b0\i0\fs22 Apocolocyntosis book(1001.txt)\ulnone\b\i\fs24\par
+\b0\i0\fs22 Question 1:why is claudius the most occouring word in the book?\par
+Claudius is thebname of the protagonist of the book and is shown in the phase distributio plot of the 4 and5 word phrase occourence, The phrase "as the blessed claudius" and "inasmuch as the blessed claudius"\b\i\fs24\par
+
+\pard\sa200\sl276\slmult1\tx1980\b0\i0\fs22 Question 2:why is there more occourence of 2 phrase words than others?\par
+
+\pard\sa200\sl276\slmult1\tx1700 from the phase plot phrases like ''of the", ''to the'' appear about 31 and 15 times respectively these phrases are used to link wprds together and hence very reusable\par
+Question 3:what are the names of some characters in the book?\par
+
+\pard\sa200\sl276\slmult1\tx1980 I proceeded to tokenize the words which was useful in the next phase of my analysis which was to get names and places mentioned in the book using both spacy and printed the mostg occouring names and places mentioned in the book\par
+some names of characters in the boo are vienne native gaul, messrs weidmann,lucii annaei...\par
+
+\pard\sa200\sl276\slmult1\ul The House on the Borderland (1002.txt)\par
+\ulnone Question 1: What genre is the book?\par
+words like creature ,pepper,light, sun,day, dark common within multiple chapters as shown in the word cloud suggests the book is a fantasy or fiction book also words like "i heard a" ''the direction of"  shown in the phase distribution plot of chapter 5 suggest the book could be of a horror genre.\par
+Question 2:Why pepper one of the most occouring word in the multiple chapters?\par
+from the phase diatribution plot of chapter 15 the 5 words phrase shows the phrase "that had once been pepper" occouring  2 times within that chapter that context suggests that pepper is a person the name and place identification using NLTK's NER shows that pepper is the 3rd most occouring name of a person in the book\par
+
+\pard\sa200\sl276\slmult1\tx1980 Question 3: Why is there more occourence of 2 phrase words than others?\par
+from the phase plot phrases like ''of the", ''in the'' appear about 580 and 200 times respectively these phrases are used to link words together and hence very reusable.\b\i\fs24\par
+
+\pard\sa200\sl276\slmult1\tx1700  \ul\b0\i0\fs22 My First Years As A Frenchwoman (1003.txt)\par
+\ulnone Question 1: what are some names of people in the book \b\i\fs24\par
+\b0\i0\fs22 the name and place identification using spacy and NLTK's NER shows that some people in the book are Bourneville Wales Prince, Wolseley',Adams Sir Francis...\par
+Question 2: what are some names of places mentioned in the book?\par
+the name and place identification using spacy and NLTK's NER shows that some places mentioned in the book are: Berlin, St. Petersburg, Scotland, England...\par
+Question3: why does the word "one" of the most occouring word in the multiple chapters?\par
+from the phase plot i saw the context in which one was used in phrases  like "one of the" ''asked to see me one" this just shows the writer is fond of refering to people as one which she did multiple times\par
+\i\fs24\par
+
+\pard\sa200\sl276\slmult1\b Suggestions\par
+\b0\i0\fs22 The chapters should be labelled more appropraitely than with just roman numerals, because of this I was unable to read chapters for the My First Years As A Frenchwoman (1003.txt) book with code, I had to label it manually.\par
+with basic descriptive analysis I cant be entirely certain of determining the genre of the book, I could make speculations but it could be wrong.\par
+\b\i\fs24 Bibliography\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 {{\field{\*\fldinst{HYPERLINK https://www.analyticsvidhya.com/blog/2020/04/beginners-guide-exploratory-data-analysis-text-data/#3 }}{\fldrslt{https://www.analyticsvidhya.com/blog/2020/04/beginners-guide-exploratory-data-analysis-text-data/#3\ul0\cf0}}}}\f1\fs24\par
+{\pntext\f2\'B7\tab}{{\field{\*\fldinst{HYPERLINK https://cheatography.com/davechild/cheat-sheets/regular-expressions/ }}{\fldrslt{https://cheatography.com/davechild/cheat-sheets/regular-expressions/\ul0\cf0}}}}\f1\fs24\par
+{\pntext\f2\'B7\tab}{{\field{\*\fldinst{HYPERLINK https://towardsdatascience.com/named-entity-recognition-with-nltk-and-spacy-8c4a7d88e7da }}{\fldrslt{https://towardsdatascience.com/named-entity-recognition-with-nltk-and-spacy-8c4a7d88e7da\ul0\cf0}}}}\cf0\highlight0\b0\i0\f0\fs22\par
+}
+ 
